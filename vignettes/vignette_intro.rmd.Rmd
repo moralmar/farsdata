@@ -21,13 +21,12 @@ Given are data of three years:
 Each file containing the data of fatal vehicle crashes within the United States.  
 An example of the head of the 2013 data file is shown below:
 ```{r}
-# setwd("C:/Users/marco/OneDrive/061 Coursera/spec_MasteringSoftwareDevInR/03_BuildingRPackages/w2_assignment/data")
 # require(farsdata)
 
-name_2013 <- make_filename(2013)
-fars_2013 <- fars_read(name_2013) 
-dim(fars_2013)
-head(fars_2013)
+# name_2013 <- make_filename(2013)
+# fars_2013 <- fars_read(name_2013) 
+# dim(fars_2013)
+# head(fars_2013)
 ```
 
 ## Workflow
@@ -41,38 +40,34 @@ To load the data, you can work with the given functions within this package:
 #### 1. Create filename
 Depending on which year you would like to load, the filename can be accordingly created:
 ```{r}
-name_2013 <- make_filename(2013)
-name_2013
+# name_2013 <- make_filename(2013)
+# name_2013
 ```
 
 #### 2.1 Load data - single year
 Data of one single year can be loaded via the `fars_read_years()` function and have only one year as the input. Make sure, that you have the working directory correctly
 ```{r}
-# setwd("C:/Users/marco/OneDrive/061 Coursera/spec_MasteringSoftwareDevInR/03_BuildingRPackages/w2_assignment/data")
-fars_2013 <- fars_read_years(2013)
-fars_2013[[1]]
+# fars_2013 <- fars_read_years(2013)
+# fars_2013[[1]]
 ```
 
 #### 2.2 Load data - multiple years
 Same approach, but with various year as input
 ```{r}
-# setwd("C:/Users/marco/OneDrive/061 Coursera/spec_MasteringSoftwareDevInR/03_BuildingRPackages/w2_assignment/data")
-fars_3years <- fars_read_years(2013:2015)
+# fars_3years <- fars_read_years(2013:2015)
 ```
 
 #### 3. Summarizing the data
 the `fars_summarize_years()` function takes the loaded data and applies a summarize function on it: in this case, it counts the fatalities by month and year:
 ```{r}
-# setwd("C:/Users/marco/OneDrive/061 Coursera/spec_MasteringSoftwareDevInR/03_BuildingRPackages/w2_assignment/data")
-fars_summary <- fars_summarize_years(2013:2015)
-fars_summary
+# fars_summary <- fars_summarize_years(2013:2015)
+# fars_summary
 ```
 
 #### 5. Mapping fatal crashes
 Finally, the `fars_map_state()` function takes the state ID and a year as an input and plots the fatality. Make sure you have the `mapdata` package loaded. 
 ```{r}
-# setwd("C:/Users/marco/OneDrive/061 Coursera/spec_MasteringSoftwareDevInR/03_BuildingRPackages/w2_assignment/data")
-require(mapdata)
-fars_map_state(53, 2014)
-fars_map_state(36, 2014)
+# require(mapdata)
+# fars_map_state(53, 2014)
+# fars_map_state(36, 2014)
 ```
