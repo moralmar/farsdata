@@ -1,25 +1,16 @@
+# farsdata package
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-farsdata
-========
+This R package contains functions to load, summarize and plot the data given by the **National Highway Traffic Safety Administration (NHTSA)**, called **Fatality Analysis Reporting System (FARS)**. 
 
-The goal of farsdata is to ... ASDFASDFASDFASDF
-
-Installation
-------------
+## Installation
 
 You can install farsdata from github with:
 
-``` r
+```R
 # install.packages("devtools")
-devtools::install_github("moralmar/farsdata")
+devtools::install_github("farsdata/moralmar")
 ```
 
-Example
--------
+## Vignette
 
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-## basic example code
-```
+To get started, read the introduction vignette

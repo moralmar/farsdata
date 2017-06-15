@@ -1,5 +1,5 @@
 # setwd("C:/Users/mmora/OneDrive/061 Coursera/spec_MasteringSoftwareDevInR/03_BuildingRPackages/w2_assignment")
-# abc 1
+# setwd("C:/Users/marco/OneDrive/061 Coursera/spec_MasteringSoftwareDevInR/03_BuildingRPackages/w4_package/farsdata")
 # abc 2
 
 #' Read in the "Fatality Analysis Reporting System" data file
@@ -76,12 +76,14 @@ make_filename <- function(year) {
 #'
 #' @export
 fars_read_years <- function(years) {
+        require(magrittr)
+
         lapply(years, function(year) {
                 file <- make_filename(year)
                 tryCatch({
                         dat <- fars_read(file)
                         dplyr::mutate(dat, year = year) %>%
-                                dplyr::select(MONTH, year)
+                                dplyr::select_( ~MONTH, ~year)
                 }, error = function(e) {
                         warning("invalid year: ", year)
                         return(NULL)
