@@ -9,6 +9,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r}
+library(farsdata)
+```
+
+
 This is a simple package which provides functions helping you to explore the data given by the **National Highway Traffic Safety Administration (NHTSA)**, called **Fatality Analysis Reporting System (FARS)**. The background of the package is the final assignment of the Coursera course "Building R Packages". 
 
 ## data
