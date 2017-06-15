@@ -22,7 +22,7 @@ Each file containing the data of fatal vehicle crashes within the United States.
 An example of the head of the 2013 data file is shown below:
 ```{r}
 # setwd("C:/Users/marco/OneDrive/061 Coursera/spec_MasteringSoftwareDevInR/03_BuildingRPackages/w2_assignment/data")
-require(farsdata)
+# require(farsdata)
 
 name_2013 <- make_filename(2013)
 fars_2013 <- fars_read(name_2013) 
