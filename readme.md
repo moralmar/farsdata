@@ -14,3 +14,6 @@ devtools::install_github("farsdata/moralmar")
 ## Vignette
 
 To get started, read the introduction vignette
+
+## Travis Badge
+[![Build Status](https://travis-ci.org/moralmar/farsdata.svg?branch=master)](https://travis-ci.org/moralmar/farsdata)
