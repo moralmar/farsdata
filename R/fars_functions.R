@@ -13,7 +13,7 @@
 #' (side note: it ensures that it is a data frame via a dplyr function)
 #'
 #' @examples
-#' fars_read("./data/accident_2015.csv.bz2")
+#' full_filename <- system.file('extdata', 'accident_2013.csv.bz2', package = 'farsdata')
 #'
 #' @importFrom readr read_csv
 #' @importFrom dplyr tbl_df
@@ -57,11 +57,11 @@ make_filename <- function(year) {
 #' @param years The years relating to the file names, to be read in
 #'
 #' @return \code{fars_read_years} will search for the file names based on the input \code{years}
-#' For example, if \code{years} is specified as \code{2016:2017}, the function will search for
+#' For example, if \code{years} is specified as \code{2013:2014}, the function will search for
 #' the following files:
 #'   \itemize{
-#'     \item "accident_2016.csv.bz2"
-#'     \item "accident_2017.csv.bz2"
+#'     \item "accident_2013.csv.bz2"
+#'     \item "accident_2014.csv.bz2"
 #'   }
 #'   If the files exist: a list containing the requested data will be returned.
 #'   If the files do not exist: an error will be returned stating the invalid year(s).
@@ -69,21 +69,21 @@ make_filename <- function(year) {
 #' @seealso \code{\link{make_filename}} for naming convention
 #'
 #' @examples
-#' fars_read_years(2015:2016)
+#' fars_read_years(2013:2014)
 #'
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
 #'
 #' @export
 fars_read_years <- function(years) {
-        require(magrittr)
+        # require(magrittr)
 
         lapply(years, function(year) {
                 file <- make_filename(year)
                 tryCatch({
                         dat <- fars_read(file)
                         dplyr::mutate(dat, year = year) %>%
-                                dplyr::select_( ~MONTH, ~year)
+                                dplyr::select_( ~MONTH, ~year)  # smalll change here
                 }, error = function(e) {
                         warning("invalid year: ", year)
                         return(NULL)
@@ -103,7 +103,7 @@ fars_read_years <- function(years) {
 #' @seealso \code{\link{fars_read_years}} to get more information
 #'
 #' @examples
-#' fars_summarize_years(2015:2016)
+#' fars_summarize_years(2013:2014)
 #'
 #' @importFrom dplyr bind_rows
 #' @importFrom dplyr group_by
@@ -114,8 +114,8 @@ fars_read_years <- function(years) {
 fars_summarize_years <- function(years) {
         dat_list <- fars_read_years(years)
         dplyr::bind_rows(dat_list) %>%
-                dplyr::group_by(year, MONTH) %>%
-                dplyr::summarize(n = n()) %>%
+                dplyr::group_by_(~year, ~MONTH) %>%   # smalll change here
+                dplyr::summarize_(n = ~n()) %>%          # smalll change here
                 tidyr::spread(year, n)
 }
 
@@ -127,7 +127,7 @@ fars_summarize_years <- function(years) {
 #' @param years The year of interest
 #'
 #' @examples
-#' fars_map_state(2, 2016)
+#' fars_map_state(12, 2014)
 #'
 #' @importFrom dplyr filter
 #' @importFrom maps map
@@ -141,7 +141,7 @@ fars_map_state <- function(state.num, year) {
 
         if(!(state.num %in% unique(data$STATE)))
                 stop("invalid STATE number: ", state.num)
-        data.sub <- dplyr::filter(data, STATE == state.num)
+        data.sub <- dplyr::filter_(data, ~STATE == state.num)  # small change here
         if(nrow(data.sub) == 0L) {
                 message("no accidents to plot")
                 return(invisible(NULL))
