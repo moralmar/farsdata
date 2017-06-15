@@ -12,11 +12,11 @@ fars_read_years(years)
 }
 \value{
 \code{fars_read_years} will search for the file names based on the input \code{years}
-For example, if \code{years} is specified as \code{2016:2017}, the function will search for
+For example, if \code{years} is specified as \code{2013:2014}, the function will search for
 the following files:
   \itemize{
-    \item "accident_2016.csv.bz2"
-    \item "accident_2017.csv.bz2"
+    \item "accident_2013.csv.bz2"
+    \item "accident_2014.csv.bz2"
   }
   If the files exist: a list containing the requested data will be returned.
   If the files do not exist: an error will be returned stating the invalid year(s).
@@ -26,9 +26,10 @@ the following files:
 Analysis Reporting System"
 }
 \examples{
-fars_read_years(2015:2016)
+fars_read_years(2013:2014)
 
 }
 \seealso{
 \code{\link{make_filename}} for naming convention
 }
+

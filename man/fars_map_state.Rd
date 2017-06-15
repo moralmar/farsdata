@@ -17,6 +17,7 @@ fars_map_state(state.num, year)
 the state number and the year of interest
 }
 \examples{
-fars_map_state(2, 2016)
+fars_map_state(12, 2014)
 
 }
+

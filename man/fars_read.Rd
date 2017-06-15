@@ -18,6 +18,7 @@ it doesn't find the specified file. If the file exists, the function loads the c
 \code{fars_read} reads the data file from the "Fatality Analysis Reporting System.
 }
 \examples{
-fars_read("./data/accident_2015.csv.bz2")
+full_filename <- system.file('extdata', 'accident_2013.csv.bz2', package = 'farsdata')
 
 }
+

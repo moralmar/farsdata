@@ -18,9 +18,10 @@ fars_summarize_years(years)
 according to the years, which is being defined.
 }
 \examples{
-fars_summarize_years(2015:2016)
+fars_summarize_years(2013:2014)
 
 }
 \seealso{
 \code{\link{fars_read_years}} to get more information
 }
+
